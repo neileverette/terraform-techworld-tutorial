@@ -1,0 +1,18 @@
+provider "aws" {
+  region = "us-east-1"  # Specify your desired AWS region
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"  # Replace with your desired AMI ID
+  instance_type = "t1.micro"               # Specify the instance type
+  key_name      = "neileverette-ec2-key"   # Reference your key pair
+
+  tags = {
+    Name = "MyT1MicroInstance"
+  }
+}
+
+output "instance_id" {
+  value = aws_instance.example.id
+}
+
